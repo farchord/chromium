@@ -233,7 +233,6 @@ void WaylandScreen::AddOrUpdateDisplay(const WaylandOutput::Metrics& metrics) {
   gfx::DisplayColorSpaces color_spaces;
   color_spaces.SetOutputBufferFormats(image_format_no_alpha_.value(),
                                       image_format_alpha_.value());
-#if BUILDFLAG(IS_CHROMEOS_LACROS)
   auto* wayland_output =
       connection_->wayland_output_manager()->GetOutput(metrics.output_id);
   auto* color_management_output =
@@ -264,7 +263,6 @@ void WaylandScreen::AddOrUpdateDisplay(const WaylandOutput::Metrics& metrics) {
     // CreateDisplayColorSpaces()
     color_spaces.SetHDRMaxLuminanceRelative(10);
   }
-#endif
 
   changed_display.SetColorSpaces(color_spaces);
 
